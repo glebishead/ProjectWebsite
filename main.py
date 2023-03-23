@@ -3,9 +3,13 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
-def index():
-    return render_template('index.html', name='Jerry')
+@app.route('/wellcome')
+def wellcome_page():
+    return render_template('wellcome.html', name='Jerry')
+
+
+def main_page():
+    return render_template('main.html', name='Jerry')
 
 
 if __name__ == '__main__':
