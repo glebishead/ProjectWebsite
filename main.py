@@ -8,6 +8,8 @@ def wellcome_page():
     return render_template('wellcome.html', name='Jerry')
 
 
+@app.route('/')
+@app.route('/index')
 def main_page():
     return render_template('main.html', name='Jerry')
 
