@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Hello from community
+{% endblock %}
+
+{% block body_content %}
+<section>
+    <div class="form-box">
+        <div class="form-value">
+            <form action="">
+                <h2>Quiz name</h2>
+                <div class="inputbox">
+                        <input type="quizname" required>
+                        <label for="">Quiz name</label>
+                </div>
+                <div class="textbox">
+                    <label for="">Description</label>
+                    <textarea name="description" cols="40" rows="3"></textarea>
+                </div>
+                <div class="radiobox">
+                    <label>Quiz type<br></label>
+                    <input type="radio" id="personal" name="drone" value="Personal" checked>
+                    <span class="name">Personality quiz</span>
+                </div>
+                <div class="radiobox">
+                    <input type="radio" id="scored" name="drone" value="Scored">
+                    <span class="name">Scored quiz</span>
+                </div>
+                <button>Create quiz</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
