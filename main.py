@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from data import db_session
 
 
@@ -20,10 +20,11 @@ def main():
 @app.route('/register', methods=['GET', 'POST'])
 def wellcome_page():
     if request.method == 'POST':
-        data = request.data
-        print(data)
+        data = request.args.get('email')
+        # data is None ПОЧЕМУ????
         
         # перенаправить на другую страницу
+        return redirect('/')
     return render_template('register.html')
 
 
