@@ -17,13 +17,25 @@ def main():
         print(e)
 
 
-@app.route('/register', methods=['GET', 'POST'])
-def wellcome_page():
+@app.route('/login', methods=['GET', 'POST'])
+def login_page():
     if request.method == 'POST':
-        # data = request('email')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        print(data)
         # data is None ПОЧЕМУ????
         
         # перенаправить на другую страницу
+        return redirect('/')
+    return render_template('login.html')
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register_page():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        print(email, password)
         return redirect('/')
     return render_template('register.html')
 
