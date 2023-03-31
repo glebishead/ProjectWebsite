@@ -20,7 +20,7 @@ def main():
 @app.route('/register', methods=['GET', 'POST'])
 def wellcome_page():
     if request.method == 'POST':
-        data = request.args.get('email')
+        # data = request('email')
         # data is None ПОЧЕМУ????
         
         # перенаправить на другую страницу
