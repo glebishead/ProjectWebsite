@@ -17,8 +17,8 @@ section {
 
 .form-box-login {
     position: relative;
-    width: 45%;
-    height: 550px;
+    width: 450px;
+    height: 500px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
@@ -30,8 +30,8 @@ section {
 
 .form-box-register {
     position: relative;
-    width: 45%;
-    height: 600px;
+    width: 450px;
+    height: 590px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
@@ -50,28 +50,28 @@ h2 {
 .inputbox {
     position: relative;
     margin: 30px 0;
-    width: 310px;
+    width: 380px;
     border-bottom: 2px solid aliceblue;
 }
 
 .textbox {
     position: relative;
     margin: 30px 0;
-    width: 310px;
+    width: 380px;
 }
 
 .radiobox {
     position: relative;
     top: 5px;
     margin: 5px 0;
-    width: 310px;
+    width: 380px;
     color: aliceblue;
 }
 
 .textbox {
     position: relative;
     margin: -5px 0;
-    width: 310px;
+    width: 380px;
 }
 
 .inputbox label {

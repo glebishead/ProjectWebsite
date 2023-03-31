@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from data import db_session
 
@@ -29,13 +29,21 @@ def login_page():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
+    error = False
     if request.method == 'POST':
         email = request.form.get('email')
-        password = generate_password_hash(request.form.get('password'))
-        password_again = generate_password_hash(request.form.get('password_again'))
-        print(password_again, password)
-        return redirect('/')
-    return render_template('register.html')
+        password = request.form.get('password')
+        password_again = request.form.get('password_again')
+        if not (password == password_again):
+            error = 'Passwords is not the same'
+        else:
+            pass
+        #     # message
+        # # записать в бд
+        # password = password_again = generate_password_hash(password)
+        # if not check_password_hash(хэшированный из бд, вводимый):
+        #     # ошибка
+    return render_template('register.html', error=error)
 
 
 @app.route('/')
