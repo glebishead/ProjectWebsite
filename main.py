@@ -1,7 +1,8 @@
 import json
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from data import db_session
+from data.users import User
 
 
 app = Flask(__name__)
@@ -23,27 +24,42 @@ def login_page():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        return redirect('/')
+
+        db_sess = db_session.create_session()
+        try:
+            user = db_sess.query(User).filter(User.email == email).first()
+            if user.check_password(password):
+                print('Вы успешно авторизовались')
+                return redirect('/')
+            else:
+                print('Неправильный логин или пароль')
+        except AttributeError:
+            print('Пользователя нет в системе')
     return render_template('login.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
-    error = False
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
         password_again = request.form.get('password_again')
         if not (password == password_again):
-            error = 'Passwords is not the same'
+            print('Passwords is not the same')
         else:
-            pass
-        #     # message
-        # # записать в бд
-        # password = password_again = generate_password_hash(password)
-        # if not check_password_hash(хэшированный из бд, вводимый):
-        #     # ошибка
-    return render_template('register.html', error=error)
+            db_sess = db_session.create_session()
+            if db_sess.query(User).filter(User.email == email).first():
+                print("Такой пользователь уже есть")
+            else:
+                user = User(name='not stated',
+                            email=request.form.get('email'),
+                            hashed_password=generate_password_hash(password),
+                            )
+                db_sess.add(user)
+                db_sess.commit()
+                print("Пользователь добавлен")
+                return redirect('/')
+    return render_template('register.html')
 
 
 @app.route('/')
