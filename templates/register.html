@@ -6,7 +6,7 @@ Hello from community
 
 {% block body_content %}
 <section>
-    <div class="form-box-login">
+    <div class="form-box-register">
         <div class="form-value">
             <form action="" method="POST">
                 <h2>Login</h2>
@@ -19,6 +19,10 @@ Hello from community
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     <input type="password" name="password" required>
                     <label for="">Password</label>
+                </div>
+                <div class="inputbox">
+                    <input type="password" name="password_again" required>
+                    <label for="">Repeat password</label>
                 </div>
                 <div class="forget">
                     <label for=""><input type="checkbox" name="checkbox" >Remember me</label>

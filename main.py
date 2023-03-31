@@ -1,5 +1,6 @@
 import json
 from flask import Flask, render_template, request, redirect
+from werkzeug.security import generate_password_hash, check_password_hash
 from data import db_session
 
 
@@ -22,10 +23,6 @@ def login_page():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        print(data)
-        # data is None ПОЧЕМУ????
-        
-        # перенаправить на другую страницу
         return redirect('/')
     return render_template('login.html')
 
@@ -34,8 +31,9 @@ def login_page():
 def register_page():
     if request.method == 'POST':
         email = request.form.get('email')
-        password = request.form.get('password')
-        print(email, password)
+        password = generate_password_hash(request.form.get('password'))
+        password_again = generate_password_hash(request.form.get('password_again'))
+        print(password_again, password)
         return redirect('/')
     return render_template('register.html')
 
