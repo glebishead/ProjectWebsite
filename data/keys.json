@@ -1,1 +1,4 @@
-{"secret_key": "quiz123melloxgg"}
+{
+  "secret_key": "quiz123melloxgg",
+  "strong_symbols": "`~!@$;%^:&?*()-_+=/.,><"
+}

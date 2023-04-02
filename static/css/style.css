@@ -14,6 +14,28 @@ section {
     background-position: center;
     background-size: cover;
 }
+.flash {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    background: #0b072c;
+    opacity: 0.8;
+    animation: hideAnimation 0s ease-in 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}
 
 .form-box-login {
     position: relative;
