@@ -29,12 +29,12 @@ def login_page():
         try:
             user = db_sess.query(User).filter(User.email == email).first()
             if user.check_password(password):
-                flash('Success')
+                flash('Вы успешно вошли в аккаунт')
                 return redirect('/')
             else:
-                flash('Wrong login or password')
+                flash('Неправильный логин или пароль')
         except AttributeError:
-            flash('User not in system')
+            flash('Пользователя нет в системе')
     return render_template('login.html')
 
 
@@ -46,21 +46,21 @@ def register_page():
         password = request.form.get('password')
         password_again = request.form.get('password_again')
         if password != password_again:
-            flash('Passwords is not the same')
+            flash('Пароли не совпадают')
         else:
             db_sess = db_session.create_session()
             if db_sess.query(User).filter(User.email == email).first():
-                flash("Email is existing in system")
+                flash("Почты не существует в системе")
             elif (len(password) >= 6 and [*filter(lambda x: x in strong_symbols, password)]) or (len(password) >= 8):
                 user = User(name=f'user{db_sess.query(User).count() + 1}',
                             email=request.form.get('email'),
                             hashed_password=generate_password_hash(password))
                 db_sess.add(user)
                 db_sess.commit()
-                flash("User added")
+                flash("Пользователь добавлен")
                 return redirect('/')
             else:
-                flash("Password is weak")
+                flash("Пароль слабый")
     return render_template('register.html')
 
 
