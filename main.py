@@ -34,7 +34,7 @@ def login_page():
             else:
                 flash('Неправильный логин или пароль')
         except AttributeError:
-            flash('Пользователя нет в системе')
+            flash("Пользователя не существует в системе")
     return render_template('login.html')
 
 
@@ -50,7 +50,7 @@ def register_page():
         else:
             db_sess = db_session.create_session()
             if db_sess.query(User).filter(User.email == email).first():
-                flash("Почты не существует в системе")
+                flash('Пользователь уже зарегистрирован в системе')
             elif (len(password) >= 6 and [*filter(lambda x: x in strong_symbols, password)]) or (len(password) >= 8):
                 user = User(name=f'user{db_sess.query(User).count() + 1}',
                             email=request.form.get('email'),
