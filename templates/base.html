@@ -14,6 +14,8 @@
         </div>
         <nav class="navbar">
             <a href="create_test">Создать тест</a>
+        </nav>
+        <nav class="navbar">
             <a href="/">Найти тест</a>
         </nav>
         <form action="/" class="search-bar">
@@ -24,6 +26,10 @@
             <a href="/"><img src="../static/img/profile-icon.png" width=100 height=100 alt=""/></a>
         </div>
     </header>
+<audio loop autoplay id="audio">
+  <source src="static/audio/bg_music3.mp3"/>
+</audio>
+
 {% with messages = get_flashed_messages() %}
    {% if messages %}
       {% for message in messages %}
