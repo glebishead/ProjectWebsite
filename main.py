@@ -72,6 +72,7 @@ def main_page():
 
 @app.route('/create_test')
 def create_test_page():
+    
     return render_template('create_test.html')
 
 
