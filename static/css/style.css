@@ -14,31 +14,32 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 13%;
+    padding: 25px 13%;
     background: darksalmon;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.logo {
-    position: fixed;
-    left: 10px;
-    top: 10px;
-    height: 65px;
-    width: 65px;
-}
-.profile {
+.header ion-icon {
     position: fixed;
     right: 10px;
     top: 10px;
-    height: 65px;
-    width: 65px;
+    height: 55px;
+    width: 55px;
+    color: aliceblue;
 }
 .navbar a{
     left: 10px;
     font-size: 18px;
     color: aliceblue;
     margin-right: 30px;
+    text-decoration: none;
+}
+.profile {
+    position: fixed;
+    right: 10px;
+    top: 63px;
+    color: aliceblue;
     text-decoration: none;
 }
 .navbar a::after{
@@ -165,13 +166,11 @@ h2 {
     width: 100%;
     border-bottom: 2px solid aliceblue;
 }
-
 .textbox {
     position: relative;
     margin: 30px 0;
     width: 380px;
 }
-
 .radiobox {
     position: relative;
     top: 5px;
@@ -179,13 +178,11 @@ h2 {
     width: 380px;
     color: aliceblue;
 }
-
 .textbox {
     position: relative;
     margin: -5px 0;
     width: 380px;
 }
-
 .inputbox label {
     position: absolute;
     bottom: 40px;
@@ -195,7 +192,6 @@ h2 {
     pointer-events: none;
     transition: .4s;
 }
-
 .textbox label {
     position: relative;
     left: 5px;
@@ -205,14 +201,12 @@ h2 {
     pointer-events: none;
     transition: .4s;
 }
-
 .textbox textarea {
     position: relative;
     width: 100%;
     height: 150px;
     resize: none;
 }
-
 .inputbox input {
     width: 100%;
     height: 50px;
@@ -223,7 +217,6 @@ h2 {
     padding: 25px 0 5px;
     color: aliceblue;
 }
-
 .inputbox ion-icon{
     position: absolute;
     right: 8px;
@@ -231,7 +224,6 @@ h2 {
     font-size: 1.2em;
     top: 15px;
 }
-
 .forget {
     margin: -15px 0 15px;
     font-size: .9em;
@@ -239,20 +231,16 @@ h2 {
     display: flex;
     justify-content: center;
 }
-
 .forget label input{
     margin-right: 3px;
 }
-
 .forget label a {
     color: aliceblue;
     text-decoration: none;
 }
-
 .forget label a:hover {
     text-decoration: underline;
 }
-
 button {
     width: 100%;
     height: 40px;
@@ -264,20 +252,17 @@ button {
     font-size: 1em;
     font-weight: 600;
 }
-
 .register {
     font-size: .9em;
     color: aliceblue;
     text-align: center;
     margin: 25px 0 10px;
 }
-
 .register p{
     text-decoration: none;
     color: aliceblue;
     font-weight: 600;
 }
-
 .register p a:hover{
     text-decoration: underline;
 }

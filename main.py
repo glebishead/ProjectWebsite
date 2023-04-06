@@ -1,12 +1,15 @@
 import json
 from flask import Flask, render_template, request, redirect, flash
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, login_user, login_required, logout_user
+from werkzeug.security import generate_password_hash
 from data import db_session
 from data.users import User
 from data.tests import Tests
 
 
 app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.init_app(app)
 with open('data/keys.json', 'r', encoding='utf-8') as file:
     data = json.loads(file.read())
     app.config['SECRET_KEY'] = data['secret_key']
@@ -21,19 +24,33 @@ def main():
         print(e)
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = db_session.create_session()
+    return db_sess.query(User).get(user_id)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/")
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
+        remember_me = request.form.get('remember')
         db_sess = db_session.create_session()
         try:
             user = db_sess.query(User).filter(User.email == email).first()
-            if user.check_password(password):
+            if user and user.check_password(password):
+                login_user(user, remember=bool(remember_me))
                 flash('Вы успешно вошли в аккаунт')
                 return redirect('/')
-            else:
-                raise AttributeError
+            raise AttributeError
         except AttributeError:
             flash('Неправильный логин или пароль')
     return render_template('login.html')
@@ -46,6 +63,7 @@ def register_page():
         email = request.form.get('email')
         password = request.form.get('password')
         password_again = request.form.get('password_again')
+        remember_me = request.form.get('remember')
         if password != password_again:
             flash('Пароли не совпадают')
         else:
@@ -59,6 +77,8 @@ def register_page():
                 db_sess.add(user)
                 db_sess.commit()
                 flash("Пользователь добавлен")
+                logout_user()
+                login_user(user, remember=bool(remember_me))
                 return redirect('/')
             else:
                 flash("Пароль слабый")
@@ -72,6 +92,7 @@ def main_page():
 
 
 @app.route('/create_test', methods=['GET', 'POST'])
+@login_required
 def create_test_page():
     try:
         test_name = request.form.get('test_name')
@@ -91,20 +112,3 @@ def create_test_page():
 
 if __name__ == '__main__':
     main()
-
-
-
-#
-#
-#
-#
-#
-#
-#
-
-
-
-
-
-
-
