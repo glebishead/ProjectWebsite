@@ -9,6 +9,7 @@ class Tests(SqlAlchemyBase):
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    description = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     test_type = sqlalchemy.Column(sqlalchemy.String, nullable=True, default='personal')
     test_link = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     creator = orm.relationship('User')

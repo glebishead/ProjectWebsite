@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from data import db_session
 from data.users import User
+from data.tests import Tests
 
 
 app = Flask(__name__)
@@ -32,9 +33,9 @@ def login_page():
                 flash('Вы успешно вошли в аккаунт')
                 return redirect('/')
             else:
-                flash('Неправильный логин или пароль')
+                raise AttributeError
         except AttributeError:
-            flash("Пользователя не существует в системе")
+            flash('Неправильный логин или пароль')
     return render_template('login.html')
 
 
@@ -70,9 +71,21 @@ def main_page():
     return render_template('main.html')
 
 
-@app.route('/create_test')
+@app.route('/create_test', methods=['GET', 'POST'])
 def create_test_page():
+    try:
+        test_name = request.form.get('test_name')
+        description = request.form.get('description')
+        test_type = request.form.get('type')
     
+        db_sess = db_session.create_session()
+        test_ = Tests(name=test_name, description=description, test_type=test_type)
+        db_sess.add(test_)
+        db_sess.commit()
+        flash('Заготовка для теста успешно создана!')
+    except Exception as e:
+        # print(e)
+        flash('Извините, что-то пошло не так')
     return render_template('create_test.html')
 
 

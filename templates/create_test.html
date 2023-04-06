@@ -11,7 +11,7 @@ Hello from community
             <form action="" method="POST">
                 <h2>Создать тест</h2>
                 <div class="inputbox">
-                    <input type="testname" name="test" required>
+                    <input type="text" name="test_name" required>
                     <label>Название</label>
                 </div>
                 <div class="textbox">
@@ -20,11 +20,11 @@ Hello from community
                 </div>
                 <div class="radiobox">
                     <label>Тип теста<br></label>
-                    <input type="radio" id="personal" name="drone" value="Personal" checked>
+                    <input type="radio" id="personal" name="type" value="personal" checked>
                     <span class="name">Тест личности</span>
                 </div>
                 <div class="radiobox">
-                    <input type="radio" id="scored" name="drone" value="Scored">
+                    <input type="radio" id="scored" name="type" value="scored">
                     <span class="name">Тест знаний</span>
                 </div>
                 <button>Создать тест</button>
