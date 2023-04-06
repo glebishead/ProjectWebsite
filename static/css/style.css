@@ -14,16 +14,30 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 25px 13%;
-    background: rgba(255, 0, 77, 0.55);
+    padding: 20px 13%;
+    background: darksalmon;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.logo {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    height: 65px;
+    width: 65px;
+}
+.profile {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    height: 65px;
+    width: 65px;
+}
 .navbar a{
-    position: inherit;
-    font-size: 16px;
-    color: #fff;
+    left: 10px;
+    font-size: 18px;
+    color: aliceblue;
     margin-right: 30px;
     text-decoration: none;
 }
@@ -33,22 +47,18 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #fff;
+    background: aliceblue;
     bottom: -5px;
     border-radius: 5px;
     transform: translateY(10px);
     opacity: 0;
     transition: .5s ease;
 }
-.navbar a:hover:after{
-    transform: translateY(0px);
-    opacity: 1;
-}
 .search-bar{
     width: 250px;
     height: 45px;
     background-color: transparent;
-    border: 2px solid #fff;
+    border: 2px solid aliceblue;
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -58,7 +68,7 @@ body {
     background-color: transparent;
     border: none;
     outline: none;
-    color: #fff;
+    color: aliceblue;
     font-size: 16px;
     padding-left: 10px;
 }
@@ -68,16 +78,15 @@ body {
     background: transparent;
     outline: none;
     border: none;
-    color: #fff;
+    color: aliceblue;
     cursor: pointer;
 }
 .search-bar input::placeholder{
-    color: #fff
+    color: aliceblue;
 }
 .search-bar button i{
     font-size: 22px;
 }
-
 section {
     display: flex;
     justify-content: center;
@@ -102,7 +111,6 @@ section {
     animation: hideAnimation 0s ease-in 5s;
     animation-fill-mode: forwards;
 }
-
 @keyframes hideAnimation {
   to {
     visibility: hidden;
@@ -110,11 +118,10 @@ section {
     height: 0;
   }
 }
-
 .form-box-login {
     position: relative;
-    width: 450px;
-    height: 500px;
+    width: 550px;
+    height: 480px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
@@ -127,7 +134,7 @@ section {
 .form-box-register {
     position: relative;
     width: 450px;
-    height: 590px;
+    height: 550px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
@@ -136,17 +143,15 @@ section {
     justify-content: center;
     align-items: center;
 }
-
 h2 {
     font-size: 30px;
     color: aliceblue;
     text-align: center;
 }
-
 .inputbox {
     position: relative;
-    margin: 30px 0;
-    width: 380px;
+    margin: 35px 0;
+    width: 100%;
     border-bottom: 2px solid aliceblue;
 }
 
@@ -172,9 +177,8 @@ h2 {
 
 .inputbox label {
     position: absolute;
-    top: 20%;
-    left: 5px;
-    transform: translateY(-50%);
+    bottom: 40px;
+    left: 0;
     color: aliceblue;
     font-size: 1em;
     pointer-events: none;
@@ -205,7 +209,7 @@ h2 {
     border: none;
     outline: none;
     font-size: 1em;
-    padding: 35px 0 5px;
+    padding: 25px 0 5px;
     color: aliceblue;
 }
 
@@ -214,7 +218,7 @@ h2 {
     right: 8px;
     color: aliceblue;
     font-size: 1.2em;
-    top: 55px;
+    top: 15px;
 }
 
 .forget {
