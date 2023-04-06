@@ -1,6 +1,6 @@
 import json
 from flask import Flask, render_template, request, redirect, flash
-from flask_login import LoginManager, login_user, login_required, logout_user
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash
 from data import db_session
 from data.users import User
@@ -100,12 +100,14 @@ def create_test_page():
         test_type = request.form.get('type')
     
         db_sess = db_session.create_session()
-        test_ = Tests(name=test_name, description=description, test_type=test_type)
+        user = db_sess.query(User).filter(User.id == current_user.id).first()
+        test_ = Tests(name=test_name, creator=user,
+                      description=description, test_type=test_type)
         db_sess.add(test_)
         db_sess.commit()
         flash('Заготовка для теста успешно создана!')
     except Exception as e:
-        # print(e)
+        print(e)
         flash('Извините, что-то пошло не так')
     return render_template('create_test.html')
 
