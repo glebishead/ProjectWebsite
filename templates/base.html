@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    {% block css_way %} {% endblock %}
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
-
 <body>
     <header class="header">
         <ion-icon name="person-outline"></ion-icon>

@@ -64,6 +64,8 @@ def register_page():
         password = request.form.get('password')
         password_again = request.form.get('password_again')
         remember_me = request.form.get('remember')
+        username = request.form.get('username')
+        
         if password != password_again:
             flash('Пароли не совпадают')
         else:
@@ -71,7 +73,7 @@ def register_page():
             if db_sess.query(User).filter(User.email == email).first():
                 flash('Пользователь уже зарегистрирован в системе')
             elif (len(password) >= 6 and [*filter(lambda x: x in strong_symbols, password)]) or (len(password) >= 8):
-                user = User(name=f'user{db_sess.query(User).count() + 1}',
+                user = User(name=username,
                             email=request.form.get('email'),
                             hashed_password=generate_password_hash(password))
                 db_sess.add(user)
@@ -98,7 +100,7 @@ def create_test_page():
         test_name = request.form.get('test_name')
         description = request.form.get('description')
         test_type = request.form.get('type')
-    
+        
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.id == current_user.id).first()
         test_ = Tests(name=test_name, creator=user,
@@ -106,10 +108,22 @@ def create_test_page():
         db_sess.add(test_)
         db_sess.commit()
         flash('Заготовка для теста успешно создана!')
+        
     except Exception as e:
         print(e)
         flash('Извините, что-то пошло не так')
     return render_template('create_test.html')
+
+
+@app.route('/go_test', methods=['GET', 'POST'])
+def go_test_page():
+    test_name = "Первая анкета (>_<)"
+    question_list = [{"name": "Сколько Вам лет?", "variants": ["0-10", "10-20", "20-30", "30-40", "50-60", "60+"]},
+                     {"name": "Как Ваше настроение?", "variants": ["Очень хорошо", "Хорошо",
+                                                                   "Нормально", "Плохо", "Очень плохо"]},
+                     {"name": "Как Вам выступление?", "variants": ["Очень хорошо", "Хорошо",
+                                                                   "Нормально", "Плохо", "Очень плохо"]}]
+    return render_template('go_test.html', test_name=test_name, question_list=question_list)
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 're_css.html' %}
 
 {% block title %}
 Hello from community
@@ -23,6 +23,10 @@ Hello from community
                 <div class="inputbox">
                     <input type="password" name="password_again" required>
                     <label>Повторите пароль</label>
+                </div>
+                <div class="inputbox">
+                    <input type="text" name="username" required>
+                    <label>Имя пользователя</label>
                 </div>
                 <div class="forget">
                     <label><input type="checkbox" name="remember" >Запомни меня</label>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block css_way %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/new_style.css')}}">
+{% endblock %}
+
+{% block body_content %}
+<section>
+<div class="form-box-go-test">
+<div class="form-value">
+<form action="" method="POST">
+    <h2>{{test_name}}</h2>
+    {% for question in question_list %}
+        <div class="textbox">
+            <label>{{question["name"]}}</label>
+        </div>
+        <div class="textbox">
+        {% for variant in question["variants"] %}
+            <input type="radio" id="answer" name={{question["name"]}} value={{variant}}>
+            <label>{{variant}}</label><br>
+        {% endfor %}
+        </div>
+    {% endfor %}
+    <button>Закончить тест</button>
+</form>
+</div>
+</div>
+</section>
+{% endblock %}
