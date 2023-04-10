@@ -16,7 +16,7 @@
         </div>
         <div class="textbox">
         {% for variant in question["variants"] %}
-            <input type="radio" id="answer" name={{question["name"]}} value={{variant}}>
+            <input type="radio" name={{question["id"]}} value={{variant}}>
             <label>{{variant}}</label><br>
         {% endfor %}
         </div>

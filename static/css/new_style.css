@@ -149,3 +149,14 @@ h2 {
     pointer-events: none;
     transition: .4s;
 }
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: aliceblue;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+}

@@ -101,7 +101,7 @@ section {
 .flash {
     position: absolute;
     width: 100%;
-    height: 30px;
+    height: 2%;
     font-size: 20px;
     display: flex;
     justify-content: center;
@@ -121,8 +121,8 @@ section {
 }
 .form-box-login {
     position: relative;
-    width: 550px;
-    height: 480px;
+    width: 60%;
+    height: 80%;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
@@ -133,8 +133,8 @@ section {
 }
 .form-box-create-test {
     position: relative;
-    width: 450px;
-    height: 520px;
+    width: 60%;
+    height: 80%;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
@@ -145,8 +145,8 @@ section {
 }
 .form-box-register {
     position: relative;
-    width: 450px;
-    height: 560px;
+    width: 60%;
+    height: 80%;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
