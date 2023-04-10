@@ -101,14 +101,15 @@ def create_test_page():
         description = request.form.get('description')
         test_type = request.form.get('type')
         
-        db_sess = db_session.create_session()
-        user = db_sess.query(User).filter(User.id == current_user.id).first()
-        test_ = Tests(name=test_name, creator=user,
-                      description=description, test_type=test_type)
-        db_sess.add(test_)
-        db_sess.commit()
-        flash('Заготовка для теста успешно создана!')
-        
+        if test_name is not None:
+            db_sess = db_session.create_session()
+            user = db_sess.query(User).filter(User.id == current_user.id).first()
+            test_ = Tests(name=test_name, creator=user,
+                          description=description, test_type=test_type)
+            db_sess.add(test_)
+            db_sess.commit()
+            flash('Заготовка для теста успешно создана!')
+            return redirect('/')
     except Exception as e:
         print(e)
         flash('Извините, что-то пошло не так')
