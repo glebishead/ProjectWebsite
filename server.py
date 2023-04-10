@@ -1,3 +1,4 @@
+import os
 import json
 from flask import Flask, render_template, request, redirect, flash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
@@ -19,7 +20,9 @@ with open('data/keys.json', 'r', encoding='utf-8') as file:
 def main():
     try:
         db_session.global_init("db/blogs.db")
-        app.run(port=8080, host='127.0.0.1', debug=True)
+        port = int(os.environ.get("PORT", 8080))
+        app.run(host='0.0.0.0', port=port)
+        # app.run(port=8080, host='127.0.0.1', debug=True)
     except Exception as e:
         print(e)
 
